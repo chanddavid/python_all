@@ -13,9 +13,6 @@ sets2={1,"raam","haari",8}
 diff=sets1.difference(sets2)
 print(diff)
 
-z=20
-if z>2:
-    True
 
 
 
