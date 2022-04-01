@@ -17,4 +17,4 @@ print(obj._Employee__name)
 obj1=Ram("ram")
 obj1.getprivate()
 # this above code throw the error
-# so how to solve this
+# so how to solve this well once we decleared th property private is only access inside the class 

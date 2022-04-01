@@ -21,7 +21,7 @@ class Class_Method:
     @classmethod     #decorator
     def myfunc(cls,r):   #class method
         cls.r=r
-        print(f"holiday ? :{cls.fp} and is very {cls.r}")
+        print(f"holiday ? :{cls.fp} and is very {cls.r} ")
        
 
     

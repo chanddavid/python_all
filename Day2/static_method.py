@@ -5,9 +5,10 @@
 
 # obj=Static_Method()
 # Static_Method.get()
-
-
+# used when some processing is related to the class but doesnt need the class or its instance to perform it
+# doesnt know about the class and its instance
 class Static_Method:
+
     @staticmethod
     def get(n,r):
         name=n
