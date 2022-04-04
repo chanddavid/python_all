@@ -1,23 +1,20 @@
 
-from django.http import HttpResponse
-from django.shortcuts import render
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
 from .models import Student
 from .serializers import StudentSerializer
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
 from rest_framework.views import APIView
-
+from rest_framework.authentication import BasicAuthentication,SessionAuthentication
+from rest_framework.permissions import AllowAny,IsAdminUser,IsAuthenticatedOrReadOnly, IsAuthenticated,DjangoModelPermissions,DjangoModelPermissionsOrAnonReadOnly
+from rest_framework_simplejwt.authentication import JWTAuthentication
 # Create your views here.
 
-
-@api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
 class StudentAPI(APIView):
-    def get(self, id=None):
+    # authentication_classes = [SessionAuthentication]
+    # permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    def get(self,request, id=None,format=None):
         id = id
         if id is not None:
             stu = Student.objects.get(id=id)
@@ -60,9 +57,10 @@ class StudentAPI(APIView):
             return Response(serializer.errors)
 
         
-    def delete(self,id):
+    def delete(self,request,id,format=None):
         id=id
         stu=Student.objects.get(id=id)
         stu.delete()
         res={'msg':'Data Deleted'}
         return Response(res)
+    
