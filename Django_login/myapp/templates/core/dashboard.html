@@ -1,0 +1,121 @@
+{% extends 'core/main.html' %}
+{% block title %}
+    Dashboard
+{% endblock title %}
+{% block dashboard %}
+    {% include 'core/status.html' %}
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-md-5">
+                <h3 class="text-center p-2">CUSTOMER</h3>
+                <hr>
+                <div class="card">
+                    <div class="card-body">
+                        <a href="#" class="btn btn-primary btn-md  w-100">Create Custumer</a>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Phone</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in data %}
+                                    <tr>
+                                        <td>{{ i.name }}</td>
+                                        <td>{{ i.phone }}</td>
+                                        <td>
+                                            <a class="btn btn-success btn-sm" href="{% url 'details' i.id %}">View</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <h3 class="text-center  p-2">ORDER</h3>
+                <hr>
+                <div class="card" style="">
+                    <div class="card-body">
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Product</th>
+                                    <th>Date Ordered</th>
+                                    <th>Status</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in order %}
+                                    <tr>
+                                        <td>{{ i.customer }}</td>
+                                        <td>{{ i.product }}</td>
+                                        <td>{{ i.date_ordered }}</td>
+                                        <td>
+                                            {% if i.status == 'Pending' %}
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-warning"
+                                                         role="progressbar"
+                                                         style="width:50%"
+                                                         area-valuenow="50"
+                                                         area-valuemin="0"
+                                                         area-valuemax="100">Pending
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                            {% if i.status == 'Out of delivery' %}
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-danger"
+                                                         role="progressbar"
+                                                         style="width:100%"
+                                                         area-valuenow="100"
+                                                         area-valuemin="0"
+                                                         area-valuemax="100">Out of delivery
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                            {% if i.status == 'Delivered' %}
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success"
+                                                         role="progressbar"
+                                                         style="width:100%"
+                                                         area-valuenow="100"
+                                                         area-valuemin="0"
+                                                         area-valuemax="100">Delivered
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                            {% if i.status == 'Packed' %}
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-info"
+                                                         role="progressbar"
+                                                         style="width:80%"
+                                                         area-valuenow="80"
+                                                         area-valuemin="0"
+                                                         area-valuemax="100">Packed
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-warning btn-sm" href="{% url 'updateorder' i.id %}">Update</a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger btn-sm" href="{% url 'deleteorder' i.id %}">Delete</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock dashboard %}

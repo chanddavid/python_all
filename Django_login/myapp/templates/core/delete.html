@@ -1,0 +1,17 @@
+{% extends 'core/main.html' %}
+{% block deleteorder %}
+    <div>
+        <div class="container">
+            <h1 class="text-center p-2">Delete</h1>
+            <hr>
+            <h4 class="text-center">Are you sure,you want to delete {{order.customer}} order?</h4>
+            <div class="text-center"  class="d-inline">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger " value="Yes">
+                    <a href="/" class="btn btn-primary">Cancle</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock deleteorder %}
