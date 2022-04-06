@@ -47,7 +47,7 @@ def updateorder(request, id):
         data = OrderForm(request.POST, instance=order)
         if data.is_valid():
             data.save()
-            return redirect('/')
+            return redirect('/dashboard/')
     order = Order.objects.get(id=id)
     form = OrderForm(instance=order)
     context = {
@@ -60,7 +60,7 @@ def deleteorder(request, id):
     if request.method == "POST":
         order = Order.objects.get(id=id)
         order.delete()
-        return redirect('/')
+        return redirect('/dashboard/')
     order = Order.objects.get(id=id)
     context = {
         'order': order,
@@ -110,3 +110,8 @@ def loginform(request):
 def logoutform(request):
     logout(request)
     return redirect('/login/')
+
+
+
+
+
