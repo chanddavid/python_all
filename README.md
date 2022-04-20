@@ -964,5 +964,793 @@ In short ,Env files are those file that contain sensitive info.
 
 That’s it, now we have successfully hidden our sensitive information. If u push our code to GitHub that no can able to see our .env file where all the sensitive info is stored
 
+<br>
+<hr>
 
-        
+# Structured Query Language
+
+SQL is a standard language for storing, manipulating and retrieving data in databases. It uses RDBMS structure so there is a relationship between tables. It can process single records as well as a set of records at a time.
+
+**Installation**
+
+**Step 1:** To install it, update the package index on your server if you’ve not done so recently:
+
+    sudo apt update
+
+**Step 2:** Then install the mysql-server package:
+
+    Sudo apt install mysql-server
+
+**Step 3:** Ensure that the server is running using the systemctl start command:
+
+    sudo systemctl start mysql.service
+
+These commands will install and start MySQL, but will not prompt you to set a password or make any other configuration changes. Because this leaves your installation of MySQL insecure, we will address this next.
+
+**Step 4:** Configuring MySQL
+
+    sudo mysql_secure_installation
+
+This will take you through a series of prompts where you can make some changes to your MySQL installation’s security options. The first prompt will ask whether you’d like to set up the Validate Password Plugin.
+
+**Step 5**: Creating a Dedicated MySQL User and Granting Privileges
+
+    sudo mysql
+
+**Note:** If you installed MySQL with another tutorial and enabled password authentication for root, you will need to use a different command to access the MySQL shell. The following will run your MySQL client with regular user privileges, and you will only gain administrator privileges within the database by authenticating:
+
+    sudo mysql -u root -p
+
+Now let's do some useful work in sql . First we need to create a database and add some tables in it.
+
+NOTE: In sql you can write in any case
+
+- CREATE Database
+   
+        mysql> create database second_database;
+
+- USE Database
+   
+        mysql> use second_database;
+
+- CREATE TABLE
+
+        mysql> create table second_table ( id int(2), name varchar(50)address text(50), dob date);
+        mysql> desc second_table;
+        +---------+-------------+------+-----+---------+-------+
+        | Field   | Type    	| Null 	| Key 	| Default 	| Extra |
+        +---------+-------------+------+-----+---------+-------+
+        | id  	| int     		| YES  | 	| NULL	|   	|
+        | name	| varchar(50)   | YES  | 	| NULL	|   	|
+        | address | tinytext	| YES  | 	| NULL	|   	|
+        | dob 	| date    	| YES  | 	| NULL	|   	|
+        +---------+-------------+------+-----+---------+-------+
+        5 rows in set (0.00 sec)
+
+- SHOW DATABASES/TABLES
+  
+        mysql> show tables;
+
+**DataTypes**
+
+1. INT(1) or INTEGER(1)
+2. DEC(4,2) or DECIMAL(4,2)
+3. CHAR or CHARACTER
+4. VARCHAR(40)
+5. TEXT
+6. DATE
+7. DATETIME
+8. TIMESTAMP
+
+- INSERT INTO
+
+        mysql> insert into second_table
+        -> (
+        -> id,name,age,address,dob)
+        -> values(
+        -> 1,'tanka',23,'tikapur',
+        -> '1999-01-27');
+        Query OK, 1 row affected (0.00 sec)
+
+    Output
+
+        mysql> select * from second_table;
+        +------+-------+------+---------+------------+
+        | id   | name  | age  | address | dob        |
+        +------+-------+------+---------+------------+
+        |    1 | tanka |   23 | tikapur | 1999-01-27 |
+        +------+-------+------+---------+------------+
+        1 row in set (0.00 sec)
+
+- INSERT INTO- without specifying  column name 
+
+        mysql> insert into second_table
+        -> values(
+        -> 1,'tanka',23,'tikapur',
+        -> '1999-01-27');
+        Query OK, 1 row affected (0.00 sec)
+
+    Output
+
+        mysql> select * from second_table;
+        +------+-------+------+---------+------------+
+        | id   | name  | age  | address | dob        |
+        +------+-------+------+---------+------------+
+        |    1 | tanka |   23 | tikapur | 1999-01-27 |
+        +------+-------+------+---------+------------+
+        1 row in set (0.00 sec)
+
+- INSERT INTO - with changing order of column 
+
+        mysql> insert into table_name
+        -> (
+        ->col2,col1,col3)
+        -> values(
+        ->val2,val2,val3);
+        Query OK, 1 row affected (0.00 sec)
+
+- INSERT INTO  Data Only  specified column
+
+	We can skip the column whose data is unknown so that we get null value for that column.
+
+        INSERT INTO - Multiple records as One
+        mysql> insert into second_table
+        -> values
+        -> (3,'kalu',22,'kailali','2001-01-23'),
+        -> (4,'david',24,'ktm','2301-01-23'),
+        -> (5,'dipesh',21,'achham','2002-04-23'),
+        -> (6,'neeru',25,'tkp','1996-04-23');
+        Query OK, 4 rows affected (0.01 sec)
+        Records: 4  Duplicates: 0  Warnings: 0
+
+    Output
+
+        mysql> select * from second_table;
+        +------+--------+------+---------+------------+
+        | id   | name   | age  | address | dob        |
+        +------+--------+------+---------+------------+
+        |    3 | kalu   |   22 | kailali | 2001-01-23 |
+        |    4 | david  |   24 | ktm     | 2301-01-23 |
+        |    5 | dipesh |   21 | achham  | 2002-04-23 |
+        |    6 | neeru  |   25 | tkp     | 1996-04-23 |
+        +------+--------+------+---------+------------+
+        6 rows in set (0.00 sec)
+
+- SELECT 
+
+	The select statement is used to select data from a database and retrieve the info.
+Select all column from table
+
+        mysql> select * from table_name
+
+    Select particular column from table
+
+        mysql> select * from second_table
+        -> where
+        -> name='tanka';
+    Output 
+
+        +------+-------+------+---------+------------+
+        | id   | name  | age  | address | dob        |
+        +------+-------+------+---------+------------+
+        |    1 | tanka |   23 | tikapur | 1999-01-27 |
+        +------+-------+------+---------+------------+
+        1 row in set (0.00 sec)
+
+
+- SELECT with LIMIT
+  
+        mysql> select id from second_table
+        -> limit 3;
+
+    Output
+
+        +------+--------+------+---------+------------+
+        | id   | name   | age  | address | dob        |
+        +------+--------+------+---------+------------+
+        |    1 | kalu   |   22 | kailali | 2001-01-23 |
+        |    2 | david  |   24 | ktm     | 2301-01-23 |
+        |    3 | dipesh |   21 | achham  | 2002-04-23 |
+        +------+--------+------+---------+------------+
+
+- WHERE clause and Operator 
+
+    In WHERE clause we have =,>,<,!=,BETWEEN,IN,LIKE,IS NOT NULL,IS NULL operators.
+
+        mysql> select * from second_table where age>20;
+        +------+---------+------+---------+------------+
+        | id   | name    | age  | address | dob        |
+        +------+---------+------+---------+------------+
+        |    1 | tanka   |   23 | tikapur | 1999-01-27 |
+        |    2 | tulasa  |   22 | solu    | 2001-01-23 |
+        |    3 | kalu    |   22 | kailali | 2001-01-23 |
+        |    4 | david   |   24 | ktm     | 2301-01-23 |
+        |    5 | dipesh  |   21 | achham  | 2002-04-23 |
+        |    6 | neeru   |   25 | tkp     | 1996-04-23 |
+        |    7 | seeru   |   26 | btkpur  | 2003-04-23 |
+        |    8 | tankman |   26 | tikapur | 2005-04-23 |
+        +------+---------+------+---------+------------+
+        8 rows in set (0.00 sec)
+<br>
+
+        mysql> select * from second_table where age BETWEEN 10 and 20;
+        +------+---------+------+---------+------------+
+        | id   | name    | age  | address | dob        |
+        +------+---------+------+---------+------------+
+        |    9 | nirmala |   19 | solu    | 2010-04-23 |
+        +------+---------+------+---------+------------+
+        1 row in set (0.00 sec)
+<br>
+
+        mysql> select * from second_table where id IN (2,3);
+        +------+--------+------+---------+------------+
+        | id   | name   | age  | address | dob        |
+        +------+--------+------+---------+------------+
+        |    2 | tulasa |   22 | solu    | 2001-01-23 |
+        |    3 | kalu   |   22 | kailali | 2001-01-23 |
+        +------+--------+------+---------+------------+
+        2 rows in set (0.00 sec)
+
+<br>
+
+        mysql> select * from second_table where age  not between 10 and 20;
+        +------+---------+------+---------+------------+
+        | id   | name    | age  | address | dob        |
+        +------+---------+------+---------+------------+
+        |    1 | tanka   |   23 | tikapur | 1999-01-27 |
+        |    2 | tulasa  |   22 | solu    | 2001-01-23 |
+        |    3 | kalu    |   22 | kailali | 2001-01-23 |
+        |    4 | david   |   24 | ktm     | 2301-01-23 |
+        |    5 | dipesh  |   21 | achham  | 2002-04-23 |
+        |    6 | neeru   |   25 | tkp     | 1996-04-23 |
+        |    7 | seeru   |   26 | btkpur  | 2003-04-23 |
+        |    8 | tankman |   26 | tikapur | 2005-04-23 |
+        +------+---------+------+---------+------------+
+        8 rows in set (0.00 sec)
+
+<br>
+
+        mysql> select * from second_table where id IN (2,3) and name like 'k%';
+        +------+------+------+---------+------------+
+        | id   | name | age  | address | dob        |
+        +------+------+------+---------+------------+
+        |    3 | kalu |   22 | kailali | 2001-01-23 |
+        +------+------+------+---------+------------+
+        1 row in set (0.00 sec)
+
+<br>
+
+        mysql> select * from second_table where id IN (2,3) and name not  like 'k%';
+        +------+--------+------+---------+------------+
+        | id   | name   | age  | address | dob        |
+        +------+--------+------+---------+------------+
+        |    2 | tulasa |   22 | solu    | 2001-01-23 |
+        +------+--------+------+---------+------------+
+        1 row in set (0.00 sec)
+
+- ORDER BY Ascending/Descending
+
+    - ASC - sort in ascending order
+    - DESC - sort in descending order
+
+            mysql> select * from second_table
+            -> order by name ASC;
+            +------+---------+------+---------+------------+
+            | id   | name    | age  | address | dob        |
+            +------+---------+------+---------+------------+
+            |    4 | david   |   24 | ktm     | 2301-01-23 |
+            |    5 | dipesh  |   21 | achham  | 2002-04-23 |
+            |    3 | kalu    |   22 | kailali | 2001-01-23 |
+            |    6 | neeru   |   25 | tkp     | 1996-04-23 |
+            |    9 | nirmala |   19 | solu    | 2010-04-23 |
+            |    7 | seeru   |   26 | btkpur  | 2003-04-23 |
+            |    1 | tanka   |   23 | tikapur | 1999-01-27 |
+            |    8 | tankman |   26 | tikapur | 2005-04-23 |
+            |    2 | tulasa  |   22 | solu    | 2001-01-23 |
+            +------+---------+------+---------+------------+
+            9 rows in set (0.00 sec)
+
+
+- NOT NULL, UNIQUE KEY, PRIMARY KEY
+
+    Each table has many unique keys which define each column uniquely. But one table have only one primary key which  cannot be null and must  be unique.
+
+        mysql> create table third_table
+        ( id int (2) not null primary key,
+        name varchar(50), age int(60),
+        address text(60),
+        roll int(5) unique key );
+        Query OK, 0 rows affected, 3 warnings (0.04 sec)
+
+    Output
+
+        mysql> desc third_table;
+        +---------+-------------+------+-----+---------+-------+
+        | Field   | Type        | Null | Key | Default | Extra |
+        +---------+-------------+------+-----+---------+-------+
+        | id      | int         | NO   | PRI | NULL    |       |
+        | name    | varchar(50) | YES  |     | NULL    |       |
+        | age     | int         | YES  |     | NULL    |       |
+        | address | tinytext    | YES  |     | NULL    |       |
+        | roll    | int         | YES  | UNI | NULL    |       |
+        +---------+-------------+------+-----+---------+-------+
+        5 rows in set (0.00 sec)
+
+- AUTO INCREMENT
+  
+    Used to generate a unique number, when a new record is inserted into a table. One table has only one auto increment and it ignores the null value.
+
+**Step 1:** Create table 
+
+        mysql> create table fourth__table
+        ( id int (2) not null primary key auto_increment,
+        name varchar(50),
+        age int(60),
+        address text(60),
+        roll int(5)
+        );
+
+Output 
+
+    mysql> desc fourth__table;
+    +---------+-------------+------+-----+---------+----------------+
+    | Field   | Type        | Null | Key | Default | Extra          |
+    +---------+-------------+------+-----+---------+----------------+
+    | id      | int         | NO   | PRI | NULL    | auto_increment |
+    | name    | varchar(50) | YES  |     | NULL    |                |
+    | age     | int         | YES  |     | NULL    |                |
+    | address | tinytext    | YES  |     | NULL    |                |
+    | roll    | int         | YES  |     | NULL    |                |
+    +---------+-------------+------+-----+---------+----------------+
+    5 rows in set (0.00 sec)
+
+**Step 2:** Insert value
+
+    mysql> insert into fourth__table(name,age,address,roll)
+    values
+    ( 'tanka',23,'tikapur',23),
+    ('david',20,'kaillai',20),
+    ('tulasa',17,'solu',12);
+    Query OK, 3 rows affected (0.01 sec)
+    Records: 3  Duplicates: 0  Warnings: 0
+
+Output
+
+    mysql> select * from fourth__table;
+    +----+--------+------+---------+------+
+    | id | name   | age  | address | roll |
+    +----+--------+------+---------+------+
+    |  1 | tanka  |   23 | tikapur |   23 |
+    |  2 | david  |   20 | kaillai |   20 |
+    |  3 | tulasa |   17 | solu    |   12 |
+    +----+--------+------+---------+------+
+    3 rows in set (0.00 sec)
+
+- AUTO INCREMENT with particular number
+
+        mysql> create table fifth_table
+        -> (
+        -> id int primary key auto_increment,
+        -> name varchar(50),
+        -> age int(2));
+        Query OK, 0 rows affected, 1 warning (0.03 sec)
+    <br>
+
+        mysql> alter table fifth_table auto_increment = 10;
+        Query OK, 0 rows affected (0.02 sec)
+        Records: 0  Duplicates: 0  Warnings: 0
+    <br>
+
+        mysql> insert into fifth_table(name,age) values ('tankaman',12);
+        Query OK, 1 row affected (0.01 sec)
+
+Output
+
+    mysql> select * from fifth_table;
+    +----+----------+------+
+    | id | name     | age  |
+    +----+----------+------+
+    | 10 | tankaman |   12 |
+    +----+----------+------+
+    1 row in set (0.00 sec)
+
+
+- Aliases
+
+Aliases are used to temporarily  rename a table name or a column name. AS is optional. Here are an example.
+
+    mysql> select col_name from table_name AS alias_name
+    mysql> select col_name AS alias_name from table_name
+    mysql> select col_name alias_name from table_name
+    mysql> select col_name AS "alias name" from table_name
+
+- SELECT DISTINCT
+  
+The select distinct statement is used to return only distinct (different) values. Inside a table,a column contains many duplicate values and sometimes you want a list of different values then select distinct is used.
+
+    mysql> select distinct name from fourth__table;
+    +----------+
+    | name     |
+    +----------+
+    | tanka    |
+    | david    |
+    | tankaman |
+    +----------+
+    4 rows in set (0.00 sec)
+
+- ALTER TABLE 
+  
+This command is used to add , change, modify and drop existing structure of the table.
+
+  1. ADD COLUMN
+
+    mysql> alter table fifth_table
+    -> add column new_col text(50);
+    Query OK, 0 rows affected (0.03 sec)
+    Records: 0  Duplicates: 0  Warnings: 0
+
+Output
+
+    mysql> select * from fifth_table;
+    +----+----------+------+---------+
+    | id | name     | age  | new_col |
+    +----+----------+------+---------+
+    | 10 | tankaman |   12 | NULL    |
+    +----+----------+------+---------+
+    1 row in set (0.00 sec)
+
+2. CHANGE COLUMN
+
+Change column  is used to change column names and data types of existing     columns without constraints.
+
+    mysql> alter table fifth_table change column new_col rollno int(5);
+    Query OK, 0 rows affected, 1 warning (0.02 sec)
+    Records: 0  Duplicates: 0  Warnings: 1
+
+Output
+
+    mysql> select * from fifth_table;
+    +----+----------+------+---------+
+    | id | name     | age  | rollno |
+    +----+----------+------+---------+
+    | 10 | tankaman |   12 | NULL    |
+    +----+----------+------+---------+
+    1 row in set (0.00 sec)
+
+3. MODIFY COLUMN
+
+Used to modify size of data type of an existing column
+
+    mysql> alter table fifth_table
+    -> modify column age int(1);
+    Query OK, 0 rows affected, 1 warning (0.02 sec)
+    Records: 0  Duplicates: 0  Warnings: 1
+
+
+4. DROP COLUMN
+   
+Used to delete column
+
+    mysql> alter table fifth_table drop column new_col;
+    Query OK, 0 rows affected (0.07 sec)
+    Records: 0  Duplicates: 0  Warnings: 0
+    mysql> select * from fifth_table;
+    +----------+----+----------+------+--------+
+    | new_colm | id | name     | age  | rollno |
+    +----------+----+----------+------+--------+
+    | NULL     | 10 | tankaman |   12 |   NULL |
+    +----------+----+----------+------+--------+
+    1 row in set (0.00 sec)
+
+- UPDATE
+ 
+The update statement is used to update existing records in a table
+
+    mysql> select * from fifth_table;
+    +----+----------+------+--------+
+    | id | name     | age  | rollno |
+    +----+----------+------+--------+
+    | 10 | tankaman |   12 |   NULL |
+    +----+----------+------+--------+
+    1 row in set (0.00 sec)
+
+    mysql> update fifth_table
+    -> set rollno=12
+    -> where id=10;
+    Query OK, 1 row affected (0.01 sec)
+    Rows matched: 1  Changed: 1  Warnings: 0
+
+Output
+
+    mysql> select * from fifth_table;
+    +----+----------+------+--------+
+    | id | name     | age  | rollno |
+    +----+----------+------+--------+
+    | 10 | tankaman |   12 |     12 |
+    +----+----------+------+--------+
+    1 row in set (0.00 sec)
+
+
+- DELETE 
+  
+Used to delete specific column
+
+    mysql> delete from second_table
+    -> where  id=2;
+    Query OK, 1 row affected (0.01 sec)
+
+Output
+
+    mysql> select * from second_table;
+    +------+---------+------+---------+------------+
+    | id   | name    | age  | address | dob        |
+    +------+---------+------+---------+------------+
+    |    1 | tanka   |   23 | tikapur | 1999-01-27 |
+    |    3 | kalu    |   22 | kailali | 2001-01-23 |
+    |    4 | david   |   24 | ktm     | 2301-01-23 |
+    |    5 | dipesh  |   21 | achham  | 2002-04-23 |
+    |    6 | neeru   |   25 | tkp     | 1996-04-23 |
+    |    7 | seeru   |   26 | btkpur  | 2003-04-23 |
+    |    8 | tankman |   26 | tikapur | 2005-04-23 |
+    |    9 | nirmala |   19 | solu    | 2010-04-23 |
+    +------+---------+------+---------+------------+
+    8 rows in set (0.00 sec)
+
+
+- MIN/MAX
+- 
+The min() returns the smallest value of the selected column and max() returns the largest value from the selected column.
+
+    mysql> select * from new;
+    +------+---------+------+---------+------------+
+    | id   | name    | age  | address | dob        |
+    +------+---------+------+---------+------------+
+    |    3 | kalu    |   22 | kailali | 2001-01-23 |
+    |    4 | david   |   24 | ktm     | 2301-01-23 |
+    |    5 | dipesh  |   21 | achham  | 2002-04-23 |
+    |    6 | neeru   |   25 | tkp     | 1996-04-23 |
+    |    7 | seeru   |   26 | btkpur  | 2003-04-23 |
+    |    8 | tankman |   26 | tikapur | 2005-04-23 |
+    |    9 | nirmala |   19 | solu    | 2010-04-23 |
+    +------+---------+------+---------+------------+
+    7 rows in set (0.00 sec)
+
+Output
+
+    mysql> select min(age) from new;
+    +----------+
+    | min(age) |
+    +----------+
+    |       19 |
+    +----------+
+    1 row in set (0.00 sec)
+
+- GROUP BY
+  
+The group by statement group, that have the same values into the summary rows ,like 
+“Find the number of customers in each row”. The  group by statement is often used with max(),min(),avg(),sum()  to group the results by one or more columns.
+
+    mysql> select name,min(age) from new group by name;
+    +---------+----------+
+    | name    | min(age) |
+    +---------+----------+
+    | kalu    |       22 |
+    | david   |       24 |
+    | dipesh  |       21 |
+    | neeru   |       25 |
+    | seeru   |       26 |
+    | tankman |       26 |
+    | nirmala |       19 |
+    +---------+----------+
+    7 rows in set (0.00 sec)
+
+- HAVING
+  
+The having clause is added because where keyword cannot be used with aggregate function
+
+    mysql> select name,max(age) from new group by name having max(age) > 30;
+    +------+----------+
+    | name | max(age) |
+    +------+----------+
+    | kalu |       39 |
+    +------+----------+
+    1 row in set (0.00 sec)
+
+- JOINS
+  
+The joins clause is used to combine rows from two or more tables, based on a related column between them. Simply, the join makes a relationship from 2 or more tables.
+
+1. Cross join
+   
+The cross join keyword returns all the records from both table
+![cross join](crossjoin.png)
+
+Here we have two tables
+
+    mysql> select * from employee;
+    +-------+-------+---------+
+    | empid | name  | city    |
+    +-------+-------+---------+
+    |     1 | tanka | tikapur |
+    |     2 | david | achham  |
+    |     3 | neeru | ktm     |
+    +-------+-------+---------+
+    3 rows in set (0.01 sec)
+ 
+    mysql> select * from department;
+    +-----+---------+
+    | did | depname |
+    +-----+---------+
+    | 101 | IT      |
+    | 102 | HR      |
+    | 103 | ADMIN   |
+    +-----+---------+
+    3 rows in set (0.00 sec)
+
+
+Output
+
+    mysql> select * from employee cross join department;
+    +-------+-------+---------+-----+---------+
+    | empid | name  | city    | did | depname |
+    +-------+-------+---------+-----+---------+
+    |     3 | neeru | ktm     | 101 | IT      |
+    |     2 | david | achham  | 101 | IT      |
+    |     1 | tanka | tikapur | 101 | IT      |
+    |     3 | neeru | ktm     | 102 | HR      |
+    |     2 | david | achham  | 102 | HR      |
+    |     1 | tanka | tikapur | 102 | HR      |
+    |     3 | neeru | ktm     | 103 | ADMIN   |
+    |     2 | david | achham  | 103 | ADMIN   |
+    |     1 | tanka | tikapur | 103 | ADMIN   |
+    +-------+-------+---------+-----+---------+
+    9 rows in set (0.00 sec)
+    
+    mysql> select name,depname from employee cross join department;
+    +-------+---------+
+    | name  | depname |
+    +-------+---------+
+    | neeru | IT      |
+    | david | IT      |
+    | tanka | IT      |
+    | neeru | HR      |
+    | david | HR      |
+    | tanka | HR      |
+    | neeru | ADMIN   |
+    | david | ADMIN   |
+    | tanka | ADMIN   |
+    +-------+---------+
+    9 rows in set (0.00 sec)
+
+
+2. Inner join
+   
+The inner join selects records that have matching value in both table
+
+![inner join](innerjoin.gif)
+
+Here we have two tables
+
+    mysql> select * from emp;
+    +-------+-------+---------+
+    | empid | name  | city    |
+    +-------+-------+---------+
+    |     1 | tanka | tikapur |
+    |     2 | david | achham  |
+    |     3 | neeru | ktm     |
+    +-------+-------+---------+
+    3 rows in set (0.01 sec)
+    
+    mysql> select * from dep;
+    +-----+---------+-------+
+    | did | depname | empid |
+    +-----+---------+-------+
+    | 101 | IT      |     3 |
+    | 102 | HR      |     1 |
+    | 103 | ADMIN   |     2 |
+    +-----+---------+-------+
+    3 rows in set (0.00 sec)
+
+
+Output 
+
+    mysql> select emp.name,dep.depname from emp inner join dep on emp.empid=dep.empid;
+    +-------+---------+
+    | name  | depname |
+    +-------+---------+
+    | tanka | HR      |
+    | david | ADMIN   |
+    | neeru | IT      |
+    +-------+---------+
+    3 rows in set (0.00 sec)
+ 
+3. left join
+
+The left  keyword returns all records from the left table and matching records from the right table.
+
+![left join](leftjoin.gif)
+
+The left join in the table that comes before the join is the left table and the table that comes after the join is the right table.
+
+So we have 2 tables
+
+    mysql> select * from emp;
+    +-------+--------+---------+
+    | empid | name   | city    |
+    +-------+--------+---------+
+    |     1 | tanka  | tikapur |
+    |     2 | david  | achham  |
+    |     3 | neeru  | ktm     |
+    |     7 | dipesh | kailali |
+    +-------+--------+---------+
+    4 rows in set (0.00 sec)
+    
+    mysql> select * from dep;
+    +-----+---------+-------+
+    | did | depname | empid |
+    +-----+---------+-------+
+    | 101 | IT      |     3 |
+    | 102 | HR      |     1 |
+    | 103 | ADMIN   |     2 |
+    +-----+---------+-------+
+    3 rows in set (0.00 sec)
+
+Output 
+
+    mysql> select name,depname from emp left join dep on emp.empid=dep.empid;
+    +--------+---------+
+    | name   | depname |
+    +--------+---------+
+    | tanka  | HR      |
+    | david  | ADMIN   |
+    | neeru  | IT      |
+    | dipesh | NULL    |
+    +--------+---------+
+    4 rows in set (0.00 sec)
+
+4. right join
+   
+The right join keyword returns all records from the right table (table2), and the matching records (if any) from the left table (table1).
+
+![right join](rightjoin.gif)
+
+
+
+So we have 2 tables
+
+    mysql> select * from emp;
+    +-------+--------+---------+
+    | empid | name   | city    |
+    +-------+--------+---------+
+    |     1 | tanka  | tikapur |
+    |     2 | david  | achham  |
+    |     3 | neeru  | ktm     |
+    |     7 | dipesh | kailali |
+    +-------+--------+---------+
+    4 rows in set (0.00 sec)
+    
+    mysql> select * from dep;
+    +-----+---------+-------+
+    | did | depname | empid |
+    +-----+---------+-------+
+    | 101 | IT      |     3 |
+    | 102 | HR      |     1 |
+    | 103 | ADMIN   |     2 |
+    +-----+---------+-------+
+    3 rows in set (0.00 sec)
+
+Output 
+
+    mysql> select name,depname from dep left join emp on emp.empid=dep.empid;
+    +-------+---------+
+    | name  | depname |
+    +-------+---------+
+    | neeru | IT      |           
+
+
+
+
+
+
+
+
