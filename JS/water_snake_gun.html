@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+        var computer=Math.floor(Math.random() * 3)+1;
+        console.log(computer)
+        var user=prompt("enter your choice:")
+        console.log(user)
+
+
+        if (computer==1){
+            computer='snake'
+        }
+        else if (computer==2){
+            computer='water'
+        }
+        else{
+            computer='gun'
+        }
+
+        function game(user,computer){
+            
+            if (user==computer){
+                document.write("tie")
+            }
+            else if (computer=='water' & user=='snake' |  computer=='gun' & user=='water' | computer=='snake' & user=='gun'){
+                document.write("you win")
+            }
+            else{
+                document.write('you loose')
+            }
+
+        }
+        game(user,computer)
+      
+        
+    </script>
+</body>
+</html>

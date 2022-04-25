@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="len"></p>
+    <p id="ind"></p>
+    <p id="slice"></p>
+    <p id="search"></p>
+    <p id="match"></p>
+    <p id="include"></p>
+
+
+    <script>
+        var name="tankaman sodari"
+        var favourite="game of throne, showoff"
+
+        document.getElementById('len').innerHTML=favourite.length
+        document.getElementById('ind').innerHTML=favourite[0]
+        document.getElementById('slice').innerHTML=favourite.slice(1,5)
+        document.getElementById('slice').innerHTML=favourite.replace('throne','tanka')
+        document.getElementById('search').innerHTML=favourite.search('of')
+        document.getElementById('match').innerHTML=favourite.match(/of/g)
+        document.getElementById('include').innerHTML=favourite.includes("game")
+    
+      
+
+
+
+    </script>
+</body>
+</html>
