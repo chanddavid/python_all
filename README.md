@@ -931,7 +931,8 @@ You should use a Custom User Model when your application has specific requiremen
                 raise ValueError('Superuser must have is_sactive=True.')
     
             return self.create_user(email,user_name,first_name,password,**extra_fields)
-<br><br><br>
+<br><br>
+<hr>
 
 **.ENV FILES**
 
@@ -1162,7 +1163,7 @@ Select all column from table
         | id   | name    | age  | address | dob        |
         +------+---------+------+---------+------------+
         |    1 | tanka   |   23 | tikapur | 1999-01-27 |
-        |    2 | tulasa  |   22 | solu    | 2001-01-23 |
+        |    2 | sujana  |   22 | solu    | 2001-01-23 |
         |    3 | kalu    |   22 | kailali | 2001-01-23 |
         |    4 | david   |   24 | ktm     | 2301-01-23 |
         |    5 | dipesh  |   21 | achham  | 2002-04-23 |
@@ -1186,7 +1187,7 @@ Select all column from table
         +------+--------+------+---------+------------+
         | id   | name   | age  | address | dob        |
         +------+--------+------+---------+------------+
-        |    2 | tulasa |   22 | solu    | 2001-01-23 |
+        |    2 | sujana |   22 | solu    | 2001-01-23 |
         |    3 | kalu   |   22 | kailali | 2001-01-23 |
         +------+--------+------+---------+------------+
         2 rows in set (0.00 sec)
@@ -1198,7 +1199,7 @@ Select all column from table
         | id   | name    | age  | address | dob        |
         +------+---------+------+---------+------------+
         |    1 | tanka   |   23 | tikapur | 1999-01-27 |
-        |    2 | tulasa  |   22 | solu    | 2001-01-23 |
+        |    2 | sujana  |   22 | solu    | 2001-01-23 |
         |    3 | kalu    |   22 | kailali | 2001-01-23 |
         |    4 | david   |   24 | ktm     | 2301-01-23 |
         |    5 | dipesh  |   21 | achham  | 2002-04-23 |
@@ -1224,7 +1225,7 @@ Select all column from table
         +------+--------+------+---------+------------+
         | id   | name   | age  | address | dob        |
         +------+--------+------+---------+------------+
-        |    2 | tulasa |   22 | solu    | 2001-01-23 |
+        |    2 | sujana |   22 | solu    | 2001-01-23 |
         +------+--------+------+---------+------------+
         1 row in set (0.00 sec)
 
@@ -1246,7 +1247,7 @@ Select all column from table
             |    7 | seeru   |   26 | btkpur  | 2003-04-23 |
             |    1 | tanka   |   23 | tikapur | 1999-01-27 |
             |    8 | tankman |   26 | tikapur | 2005-04-23 |
-            |    2 | tulasa  |   22 | solu    | 2001-01-23 |
+            |    2 | sujana  |   22 | solu    | 2001-01-23 |
             +------+---------+------+---------+------------+
             9 rows in set (0.00 sec)
 
@@ -1310,7 +1311,7 @@ Output
     values
     ( 'tanka',23,'tikapur',23),
     ('david',20,'kaillai',20),
-    ('tulasa',17,'solu',12);
+    ('sujana',17,'solu',12);
     Query OK, 3 rows affected (0.01 sec)
     Records: 3  Duplicates: 0  Warnings: 0
 
@@ -1322,7 +1323,7 @@ Output
     +----+--------+------+---------+------+
     |  1 | tanka  |   23 | tikapur |   23 |
     |  2 | david  |   20 | kaillai |   20 |
-    |  3 | tulasa |   17 | solu    |   12 |
+    |  3 | sujana |   17 | solu    |   12 |
     +----+--------+------+---------+------+
     3 rows in set (0.00 sec)
 
@@ -1746,11 +1747,911 @@ Output
     | name  | depname |
     +-------+---------+
     | neeru | IT      |           
+<br>
+<hr>
+<br>
+
+# HTML
+
+HTML is the standard markup language for creating Web pages.
+
+**What is HTML?**
+
+- HTML stands for Hyper Text Markup Language
+- HTML is the standard markup language for creating Web pages
+- HTML describes the structure of a Web page
+- HTML consists of a series of elements
+- HTML elements tell the browser how to display the content
+- HTML elements label pieces of content such as "this is a heading", "this is a paragraph", "this is a link", etc.
+
+       <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>my title</title>
+        </head>
+        <body>
+        <h1>My First Heading</h1>
+        <p>My first paragraph.</p>
+        </body>
+        </html>
+
+- The !DOCTYPE html declaration defines that this document is an HTML5 document
+- The html element is the root element of an HTML page
+- The head element contains meta information about the HTML page
+- The title element specifies a title for the HTML page (which is shown in the browser's title bar or in the page's tab)
+- The body element defines the document's body, and is a container for all the visible contents, such as headings, paragraphs, images, hyperlinks, tables, lists, etc.
+- The h1 element defines a large heading
+
+**Html Tables**
+
+HTML tables allow web developers to arrange data into rows and columns.
+
+    <table>
+    <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+    </tr>
+    <tr>
+    <td>ekbana</td>
+    <td>98797978</td>
+    <td>nepal</td>
+    </tr>
+    <tr>
+    <td>ekbana solution</td>
+    <td>345345345</td>
+    <td>lalitpur</td>
+    </tr>
+    </table>
+
+**HTML Links - Hyperlinks**
+
+HTML links are hyperlinks. You can click on a link and jump to another document. When you move the mouse over a link, the mouse arrow will turn into a little hand. 
+
+    <a href="url">link text</a>
+    <button onclick="document.location='default.asp'">HTML Tutorial</button>
+
+
+**HTML Layout Elements and Techniques**
+
+HTML has several semantic elements that define the different parts of a web page:
+
+    <header> - Defines a header for a document or a section
+    <nav> - Defines a set of navigation links
+    <section> - Defines a section in a document
+    <article> - Defines an independent, self-contained content
+    <aside> - Defines content aside from the content (like a sidebar)
+    <footer> - Defines a footer for a document or a section
+    <details> - Defines additional details that the user can open and close on demand
+    <summary> - Defines a heading for the <details> element
 
 
 
+**HTML Forms**
+
+An HTML form is used to collect user input. The user input is most often sent to a server for processing. 
 
 
+The form Element
+
+    <form action="" method="get">
+    <label for="first">Name:</label>
+    <input type="text" value="" name="first">
+    <br>
+    <label for="last">Last:</label>
+    <input type="text" value="" name="last">
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" value="" name="email">
+    <br>
+    <input type="submit" value="Submit">
+    </form>
+
+The input Element
+
+The HTML input element is the most used form element.  An input element can be displayed in many ways, depending on the type attribute.  Here are some examples:
+
+
+Text Fields
+
+    <form>
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname">
+    </form>
+
+
+<br>
+<br>
+<hr>
+
+# CSS
+
+CSS is the language we use to style a Web page
+
+**What is CSS?**
+
+- CSS stands for Cascading Style Sheets
+- CSS describes how HTML elements are to be displayed on screen, paper, or in other media
+- CSS saves a lot of work. It can control the layout of multiple web pages all at once
+External stylesheets are stored in CSS files
+
+**CSS Selectors**
+
+A CSS selector selects the HTML element(s) you want to style.
+
+- The CSS element Selector
+- The CSS class Selector
+- The CSS id Selector
+- The CSS Universal Selector
+
+        body{
+        font-family: 'Sansita',sans-serif;
+        }
+        *{
+        padding-top: 5%;
+        }
+        .emailform{
+        margin-bottom: 10px;
+        }
+        #sub{
+        background-color: green;
+        }
+
+<br>
+<br>
+<hr>
+
+# JavaScript
+
+Js is an engine of a web application. JavaScript helps to program the behavior of web pages
+
+**Overview**
+
+- Core Javascript
+- Document Object Model
+- Accessing Document Element
+- Event Handling
+- Event Type
+- Window
+- Form Handling
+- Form validation
+
+**Core Javascript**
+
+Variables
+
+There are 3 Ways to Declare a JavaScript Variable
+- Using var
+- Using let
+- Using const
+  
+        <script>
+            var name="tanka"
+            const salary="200000"  
+        { 
+            let overview=document.write(name , salary)
+        }
+        </script>
+
+The value of a variable always varies, and the const is always constant  and has a block scope which means its value is the same within a scope.
+
+**Operators**
+
+    Operator    Description
+    +           Addition
+    -           Subtraction
+    *           Multiplication
+    **          Exponentiation (ES2016)
+    /           Division
+    %           Modulus (Division Remainder)
+    ++          Increment
+    --          Decrement
+    ==          equal to
+    ===         equal value and equal type
+    !=          not equal
+    !==         not equal value or not equal type
+    >           greater than
+    <           less than
+    >=          greater than or equal to
+    <=          less than or equal to
+    ?           Ternary operator
+    &           and
+    |           or
+    !           not
+
+<br>
+
+    <script>
+        var a=2
+        var b=4
+        var c=document.write(a+b)
+        var c=document.write(a-b)
+        var c=document.write(a/b)
+        var c=document.write(a%b)
+        var c=document.write(a^b)
+    </script>
+
+**Prompt**
+
+This operator is used to prompt the alert box on the window.
+
+    <script>
+        var a=prompt("Enter your name:")
+        document.write(a)
+    </script>
+
+
+**Function**
+
+A JavaScript function is a block of code designed to perform a particular task. A JavaScript function is executed when "something" invokes it (calls it).
+
+    <script>
+        var a=2
+        var b=4
+        var c= sum(a,b)
+        function sum(a,b) {
+            return a*b
+        }
+        document.write(c)
+    </script>
+
+
+**String**
+
+JavaScript strings are for storing and manipulating text.
+
+    <p id="len"></p>
+    <p id="ind"></p>
+    <p id="slice"></p>
+    <p id="search"></p>
+    <p id="match"></p>
+    <p id="include"></p>
+
+    <script>
+        var name="tankaman sodari"
+        var favourite="game of throne, showoff"
+    
+    document.getElementById('len').innerHTML=favourite.length
+    document.getElementById('ind').innerHTML=favourite[0]
+    document.getElementById('slice').innerHTML=favourite.slice(1,5)
+        document.getElementById('slice').innerHTML=favourite.replace('throne','tanka')
+    document.getElementById('search').innerHTML=favourite.search('of')
+    document.getElementById('match').innerHTML=favourite.match(/of/g)
+        document.getElementById('include').innerHTML=favourite.includes("game")
+    </script>
+
+
+**String Templates**
+
+Template Literals use back-ticks (``) rather than the quotes ("") to define a string. Template literals provide an easy way to interpolate variables and expressions into strings. The method is called string interpolation.
+
+    <script>
+        let firstName = "tanka";
+        let lastName = "sodari";
+        let text = `Welcome ${firstName}, ${lastName}!`;
+        let total = `total: ${firstName}, ${lastName}!`;
+        document.getElementById("demo").innerHTML = text;
+    </script>
+
+**Array**
+
+An array is a special variable, which can hold more than one value
+
+    <p id="demo"></p>
+    <script>
+        var text=[]
+        var arr=["apple",'ball','cat','dog']
+        arr.push("Lemon");  // Adds a new element (Lemon) to arr
+        arr.pop()  // removes the last element from an array:
+        arr.shift() //method removes the first array element
+        arr.unshift() //adds a new element to an array (at the beginning),
+        arr.sort()     //sort in ascending
+        arr.reverse 	//sort in descending
+        for(let i=0;i<arr.length;i++){
+            text=text+arr[i]
+        }
+        document.getElementById('demo').innerHTML= text
+    </script>
+
+
+**Array Iteration**
+
+Array iteration methods operate on every array item.
+forEach()  method
+The forEach() method calls a function (a callback function) once for each array element.
+
+    note=[‘apple ,’ball’,’cat’,’dog’]  
+    note.forEach((element, index) => {
+        html += `<div class="col-md-3 notecard mb-5">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body ">
+                <h5 class="card-title">Note ${index + 1}</h5>
+                <hr>
+                <p class="card-text">${element}
+                </p>
+                <a href="#" class="btn btn-danger">Delete Notes</a>
+            </div>
+        </div>
+    </div>`
+    });
+
+When we have to iterate whole elements then we use Array.from method
+
+    let searchnote = document.getElementsByClassName('notecard')
+    Array.from(searchnote).forEach((element) => {
+        let text=element.getElementsByTagName('p')[0].innerText
+        if(text.includes(input_value)){
+            element.style.display="block"
+        }
+        else{
+            element.style.display="none"
+    
+        }
+    })
+
+
+**Classes and Object**
+
+JavaScript Classes are templates for JavaScript Objects. Use the keyword class to create a class. Always add a method named constructor():
+
+    class Book{
+    constructor(name, author, type) {
+        this.name = name;
+        this.author = author;
+        this.type = type;
+    }
+    }
+    let book = new Book(“tanka”, “david”, “programmer”)
+
+
+**Document Object Model**
+
+The Dom is an API for HTML and XML documents. According to DOm,every html tag is a object and nested tag are children
+
+![Dom](Screenshot%20(122).png)
+
+**Accessing Document Element**
+
+Often, with JavaScript, you want to manipulate HTML elements.
+To do so, you have to find the elements first. There are several ways to do this:
+
+![selector](Screenshot%20(126).png)
+
+1. getElementsById
+
+Get the element with the specified ID
+
+    let tableBody=document.getElementById('tableBody') 
+
+Length property
+
+    let tableBody=document.getElementById('tableBody').length;
+    // or
+    let tableBody=document.getElementById('tableBody')
+    len=tableBody.length;
+ 
+2. getElementsByTagName
+
+        let searchnote = document.getElementsByClassNam('notecard')
+            let text=searchnote.getElementsByTagName('p’)
+        let text=searchnote.getElementsByTagName('*’)	
+
+or
+
+        let searchnote = document.getElementsByClassName('notecard').getElementsByTagName('p’)
+ 
+ 
+Loop property
+
+    let tableBody=document.getElementById('tableBody')
+    len=tableBody.length;
+    for(i=0;i<len;i++){
+    let all=document.getElementsByTagName('p')[i]
+    }
+    
+3. getElementsByClassName
+
+Get the element with the specified ID
+
+    let searchnote = document.getElementsByClassName('notecard')
+
+4. querySelector
+
+It returns the first match of the passed selector string 
+
+    document.querySelector("p").style.backgroundColor = "red";
+    document.querySelector(".id").style.backgroundColor = "red";
+    document.querySelector("#class").style.backgroundColor = "red";
+
+5. querySelectorAll
+
+It returns the node list of DOM element that matches the query
+	
+    <h2 class="example">A heading</h2>
+    <p class="example">A paragraph.</p>
+    
+    <script>
+    const nodeList = document.querySelectorAll(".example");
+    for (let i = 0; i < nodeList.length; i++) {
+    Var result=document.querySelectorAll(“.geek”)[i];
+    }
+    </script>
+
+**Event Handling**
+
+The actions to which javascript can respond are called events. An event handler is javascript code associated with a particular part of the document and a particular event. A handler is executed if and when the given event occurs at the part of the document to which it is associated.
+
+**addEventListener:**
+
+    let addbook = document.getElementById('addbook')
+    addbook.addEventListener(click, function(e) {
+    alert(“hello”)
+    }
+
+**Advanced Javascript**
+
+**How does JS work?**
+
+In every browser we have a javascript engine, this javascript engine takes the js code line by line and runs each line .
+ The Js engine has the parser ,converter (which converts to machine code) and finally runs the code. The parser checks each code line by line,and if everything goes right then it produces a data structure called Abstract Syntax Tree(AST). And then convert into machine code and run at last.
+
+**Execution Context and Execution Stack**
+
+![execution context](Screenshot%20(124).png)
+
+Execution Context is the environment where our code is executed and is evaluated. So when a function is called then a new execution context is created for that function. Each execution context is stored in an execution stack. All the variables and functions that are not inside any function,when called a new execution, are created every time a function is executed.
+Global execution context is the default context like window object. All the global variables and functions are attached to the global context when they are called.
+The execution stack is also called a ‘calling stack’ with a LIFO structure , which is used to store all the execution context  created during the code execution.
+
+    function A() {
+    B();  
+    console.log("print A")
+    }
+    function B() {
+    console.log("print B")
+    C();  
+    }
+    function C() {
+    console.log("print C")
+    }
+    A();
+
+The functions are stored in the global execution context by default. Whenever a function is called then the execution context for A is created and for B and so on. The structure is in First IN Last OUT.
+
+![global execution stack](Screenshot%20(125).png)
+
+**Hoisting**
+
+Hoisting is a JS mechanism where variables and function declarations are moved to the top of their scope before the code execution.
+
+Suppose if we write the code like this:
+
+    A(2,3);
+    function A(a,b) {
+    sum=a+b   
+    console.log("print sum",sum)
+    }
+
+    Then this code is executed in JS like this
+    function A(a,b) {
+    sum=a+b   
+    console.log("print sum",sum)
+    }
+    A(2,3);
+
+First  it looks for the function and variables declaration on the code if found then it allocates the memory for it (creation phase)  then moves to the top of their scope before the function is called.
+This mechanism is hoisting
+
+
+**Scope Chain**
+
+Child function can get access to the parent variable but parent function can’t get access to the 
+Child function.
+
+    function A() {
+    var name="tankman"
+    B(); 
+    function B() {
+        console.log("Name is ",name) 
+        }
+    }
+    A();
+
+Output
+
+    Name is tankman
+
+
+
+**Strict Mode**
+
+Strict mode prohibits some syntax likely to be defined in future versions of ECMAScript. It prevents, or throws errors, when relatively “unsafe” actions are taken (such as gaining access to the global object). It disables features that are confusing or poorly thought out.
+
+    "use strict"
+    sum=2+3
+    console.log(sum)
+
+It throws the error that the sum is not defined.
+
+**This Keyword**
+
+- this keyword refers to the object it belongs to. 
+- Alone, this refers to the global object(window). 
+- In regular function ,alone, this refers to the global objects. 
+- In a method, it refers to the owner object.
+- In a function, strict mode, this is undefined
+- Arrow function doesn’t have this or argument binding
+
+
+This is a regular function and this refers to the global objects(window)
+
+    function tankman(){
+        var add=2+2
+        console.log("the sum is ",add)
+        console.log(this)
+    
+    }
+    tankman()
+
+
+This is a method ,where function is inside the object, so this refers to the tankman object.
+
+    const tankman={
+    name:"tanka",
+    age:"18",
+    sum:function(){
+        var add=2+2
+        console.log("the sum is ",add)
+        console.log(this.name)
+    }
+    }
+    tankman.sum()
+
+Example:
+
+    const tankman={
+    name:"tanka",
+    age:"18",
+    sum:function(){
+        var add=2+2
+        console.log("the sum is ",add)
+        console.log(this.name)
+        function func1(){
+            var name="kalu"
+            console.log(name)
+            console.log(this)
+        }
+        func()
+    }
+    }
+    tankman.sum()
+
+Output:
+
+    the sum is  4
+    tanka
+    kalu
+    Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+
+This gives the window object because the func1 function is the regular function.
+
+
+**In JavaScript Everything is an object?**
+
+Almost everything in JavaScript is an object. In fact, only six things are not objects. They are  null , undefined , strings, numbers, boolean, and symbols.
+
+Array is also an object. So let's prove it,
+
+    const array=[1,2,3]
+    console.log(Array.isArray(array))
+
+Output 
+
+    true
+
+
+**Function is the first class citizens**
+
+A programming language is said to have first class functions when functions in that language are treated like any other variable.
+
+- In javascript we can assign a function to a variable also as a method.
+   
+- Pass a function as an argument
+  
+- Returning function(one function can return other function)
+  
+Assigning a method in js is super easy as well. Similar to how we can assign a function to a variable, we can assign a function as  a value to a key in an object .
+
+    const variablename=function (){
+    console.log("we can assign a function to a variable")
+    }
+    variablename()
+
+Or 
+
+    const variablename =
+    {
+    name: "tankaman",
+    age: 20,
+    func1: function () {
+        console.log("we can assign a function to a variable")
+    }
+    }
+    variablename.func1
+
+We can also pass a function as an argument like below
+
+    const func1= ()=>{
+    console.log("hello")
+    }
+    
+    const greet=(func1,name)=>{
+    console.log(func1()+name)
+    }
+    greet(func1,"tanka")
+
+
+In js one function can return to another function
+
+    function a(){
+    return function b(){
+        console.log("hello i am returning from home")
+    }
+    }
+    a()()
+
+
+**Callback function**
+
+Any function that is passed as an argument is called a callback function.
+
+    const funA=(friend,funcback)=>{
+    console.log(`hello sujana i am talking to ${friend}, i will call you back`)
+            funcback()
+        }
+    const funB=()=>{
+            console.log("Hello sujana how are u okay")
+        }
+    funA("prajwol",funB)
+ 
+
+Output
+
+    hello sujana i am talking to prajwol, i will call you back
+    callbackfunction.html:31 Hello sujana how are u okay
+
+
+A callback is a function that is to be executed after another function has finished executing.
+
+    const funA=()=>{
+            setTimeout(()=>{
+                console.log("func A")
+                funB()
+            },3000)
+            
+        }
+    const funB=()=>{
+            console.log("func B")
+        }
+    funA()
+
+Output
+
+    The output will come after 3 second
+    func A
+    func B
+ 
+ 
+
+
+**Anonymous Function and Higher order Function**
+
+The function that has no name is called an anonymous function.
+The higher order functions are those functions that return an anonymous function inside their function.
+
+    const funcA = (name) => {
+            if (name === "tanka") {
+                return (age) => {
+                    console.log(`hello ${name} your age is ${age}`)
+                }
+            }
+        }
+        funcA('tanka')(23)
+
+In the above  example it returns the anonymous function of argument age. While calling the funcA we have to pass the argument or () this operator while no arguments  are passing.
+
+    const funcA=(name)=>{
+            if (name==="tanka"){
+                return (){
+                    console.log(`hello ${name}`)
+                }
+            }
+        }
+        funcA('tanka')()
+
+
+
+**Immediately Invoked Function Expression(IIFE)**
+
+The IIFE is a javascript function that runs as soon as it is defined. It is a design pattern which is also known as a self executing anonymous function and contains two major parts.
+
+- The first is the anonymous function with lexical scope enclosed within the grouping operator (). This prevents accessing variables within the IIFE idiom as well as polluting the global score.
+  
+- The second part creates the immediately invoked function expressions () through which the js engine will directly interpret the function. 
+
+        (()=>{
+                console.log("hello world")
+            })()
+
+The yellow part is Grouping operator(anonymous function) and the red one is IIFE. we can also pass the argument and it run as soon as it defined ,independent to any other method or function and cannot access by other global function
+
+    ((name)=>{
+            console.log(`hello ${name}`)
+        })("tanka")
+
+**Closure**
+
+The closure is the inner function which has the ability to access its parent variable , parameters and global variable.
+
+       let c=2
+       const funcA=(b)=>{
+           let a=2
+           const funcB=()=>{
+               let sum=a+b+c
+               console.log(`the answer is ${sum}`)
+           }
+           funcB()
+       }
+       funcA(2)
+
+
+**Call Method**
+
+The call method is a predefined Js method  with call(), an obj can use a method belonging to another object. In simple terms one object property can be accessed by another object so we don't have to write the same property again and again.
+
+    const detail={    
+            func1:function(){
+                console.log(`hello ${this.name}, your age is  ${this.age}`)
+            }
+            
+        }
+        const access={
+            name:"tanka",
+            age:24,
+            address:'tkp', 
+        }
+        detail.func1.call(access)
+
+Here  let us suppose object access  has some property and value that object details need , so with the help of the call method we can access another object property.
+
+    const detail={    
+            func1:function(name,address){
+                console.log(`hello ${name}, your age is  ${this.age} and address is ${address}`)
+            }         
+        }
+        const access={
+    
+            age:24,
+            address:'tkp', 
+        }
+        detail.func1.call(access,"tanka","tkp")
+
+
+The call method  takes the object name, and all others can be arguments.
+
+**Apply Method**
+
+The Apply Method is the same as the call method , the only difference is that the apply method takes an argument as an array while the call method takes an argument separately.
+
+    const detail={    
+            func1:function(name){
+                console.log(`hello ${name[0]},from ${name[1]} your age is  ${this.age}`)
+            }         
+        }
+    const access={
+            age:24,   
+        }
+    detail.func1.call(access,['tanka','tikapur'])
+
+
+**Bind Method**
+
+We can bind an object to a common function ,so that the function gives different results when it's needed. And it takes an obj as a first argument and create a new function
+
+    const obj1={
+    name:'tanka',
+    age:'23',
+    funcA:function(){
+        console.log(` hello ${this.name} your age is ${this.age}`)
+    }
+    }
+    const obj2={
+    name:'david',
+    age:'20',
+    }
+    const commonfunc=obj1.funcA.bind(obj2)
+    commonfunc()
+
+Here the obj2 is binded to the function of obj1. The common function is also a function.
+
+
+    const obj1={
+    name:'tanka',
+    age:'23',
+    }
+    const obj2={
+    name:'david',
+    age:'20',
+    }
+    const obj3={
+    name:'kalu',
+    age:'22',
+    }
+    
+    function funcA(address){
+    console.log(` hello ${this.name} your age is ${this.age} and your address is ${address}`)
+    }
+    
+    const commonfunc=funcA.bind(obj1)
+    commonfunc('tikapur')
+
+
+Here we can bind a function to any object that we need.we can pass the argument to that function also. 
+
+
+
+**For vs ForEach Method**
+
+The JavaScript for loop is used to iterate through the array or the elements for a specified number of times. If a certain amount of iteration is known, it should be used.
+The forEach() method is also used to loop through arrays, but it uses a function differently than the classic “for loop”. It passes a callback function for each element of an array together with the below parameters: 
+
+**Current Value (required)**: The value of the current array element 
+
+**Index (optional):** The index number of the current element 
+
+**Array (optional):** The array object the current element belongs to 
+
+We need a callback function to loop through an array by using the forEach method.
+
+    let arr=[1,2,4,5,6,7]
+    arr.forEach((element,index)=>{
+    console.log(element,index)
+    })
+
+
+
+The ‘for’ method is faster in performance than the ‘forEach’ method.
+
+
+**Event Loop**
+
+In synchronous Js , we have to wait until the current task to complete and then execute the next task. Hence performance is slow. But in asynchronous Js ,with the help of event loop , the current task is executing in the background if it takes time and the next task is executing
+Javascript has a runtime model based on an event loop, which is responsible for executing the code, collecting and processing events and executing queued sub tasks. 
+The below figure will clearly describe the concept of the event loop.
+
+- Heap
+
+  The heap is the memory location where all the variables and obj declaration are stored.
+
+- Execution stack
+
+    The execution stack is also called a ‘calling stack’ with a LIFO structure , which is used to store all the execution context  created during the code execution.
+
+- WebAPIs
+
+    In the webAPIs, all the ajax , setTimeout function and DOM are stored. Whenever a code has ajax,setTimeout and DOM then they are placed in the WebAPIs.
+    Task Queue/ Message Queue
+    It has a list of messages to be processed. Each message has an associated function that gets called to handle the message. All the callback functions are in the task queue.
+
+
+![eventloop](Screenshot%20(127).png)
+
+Event loops checks if any call back is in task queue and call stack is empty then, event loop helps to grab that call back and put it in execution stack(call stack)
 
 
 
