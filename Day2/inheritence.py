@@ -10,7 +10,7 @@ class Program(Employee):
     
 class Subject(Program):
     def sub(self):
-        print("this is last class")
+        print(f"this is last class and main class is {self.company}")
 
 e=Employee()
 e.detail()
@@ -20,6 +20,7 @@ p.showdetail()
 
 o=Subject()
 o.sub()
+
 o.showdetail()
 o.detail()
 

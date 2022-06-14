@@ -18,6 +18,7 @@
 
 class Class_Method:
     fp="yes"        #class variable
+    
     @classmethod     #decorator
     def myfunc(cls,r):   #class method
         cls.r=r
