@@ -9,12 +9,11 @@ import time
 # client.connect(mqttbroker)
 
 mqttbroker="localhost"
-port=1883
+port=9001
 #for local host we dont needed usename and password
-username="tankman"
-password="tank@123"
+
 publisher=mqtt.Client("Temperature_Inside")
-publisher.username_pw_set(username,password)
+# publisher.username_pw_set(username,password)
 publisher.connect(mqttbroker,port)
 
 
