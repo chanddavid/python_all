@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+    <script>
+        let arr = []
+        let datas = []
+        for (let i = 0; i < 86000; i++) {
+            datas.push(i)
+        }
+        for (let i = 0; i < datas.length; i++) {
+            arr.push(i)
+        }
+        let x = arr.length
+        $(function () {
+            $('#container').highcharts({
+                chart: {
+                    backgroundColor: '#fff',
+                    type: 'column',
+                    marginLeft: 100,
+                    marginRight: 100
+                },
+                legend: {
+                    symbolHeight: 8,
+                    symbolWidth: 8,
+                    symbolRadius: 4,
+                    margin: 15,
+                    backgroundColor: '#FFFFFF',
+                    layout: 'horizontal',
+                    itemDistance: 25,
+                    symbolMargin: 10,
+                    itemStyle: {
+                        color: 'black',
+                        fontWeight: 'normal'
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: arr,
+                    labels: {
+                        style: {
+                            color: '#FFFFFF'
+                        }
+                    },
+
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '·'
+                    }
+                },
+                tooltip: {
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#FFFFFF',
+                    borderRadius: 0,
+                    borderWidth: 5,
+                    formatter: function () {
+                        return ' <b>' + this.y + '</b><br><b>' + this.series.name + '</b>';
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    name: 'Sales',
+
+                    color: 'black',
+                    data: datas
+
+                }]
+            }, function (chart) { // on complete
+                function noop() { };
+                chart.renderer.button('<', chart.plotLeft - 60, chart.plotHeight - 135 + chart.plotTop, noop).addClass('left').add();
+
+
+                chart.renderer.button('>', chart.plotLeft + chart.plotWidth + 10, chart.plotHeight + chart.plotTop - 135, noop).addClass('right').add();
+
+                $('.left').click(function () {
+                    chart.xAxis[0].setExtremes(0, 1000);
+                });
+                $('.right').click(function () {
+                    chart.xAxis[0].setExtremes(1000, 2000);
+                })
+            });
+        });
+
+    </script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+</body>
+
+</html>
